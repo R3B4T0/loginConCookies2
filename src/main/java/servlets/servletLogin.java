@@ -42,6 +42,7 @@ public class servletLogin extends HttpServlet {
                 c.setMaxAge(3600);
                 response.addCookie(c);
                 mensaje = "Login correcto.";
+                response.sendRedirect("servletPrincipal");
             } else {
                 mensaje = "Login incorrecto.";
             }

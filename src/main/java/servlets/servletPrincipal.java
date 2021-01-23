@@ -35,11 +35,17 @@ public class servletPrincipal extends HttpServlet {
         try {
             /* TODO output your page here. You may use following sample code. */
             String mensaje = "Usted no está logueado. Loguéese <a href='login.html'>aqui</a>";
+            boolean logueado = false;
             Cookie cookies[] = request.getCookies();
             for(int i = 0; i < cookies.length; i++){
                 if(cookies[i].getName().equals("usuario_logueado")){
-                    mensaje = "Está usted logueado como " + cookies[i].getValue();
+                    mensaje = "Está ud logueado como " + cookies[i].getValue();
+                    logueado = true;
+                    break;
                 }
+            }
+            if(!logueado){
+                response.sendRedirect("login.html");
             }
             out.println("<!DOCTYPE html>");
             out.println("<html>");
